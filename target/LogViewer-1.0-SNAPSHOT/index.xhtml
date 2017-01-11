@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Log Viewer</title>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="west" size="350" resizable="false" closable="false" collapsible="true" header="Log Files">
+                <ul>
+                    <ui:repeat value="#{indexController.files}" var="f">
+                        <li><a href="?file=#{f.name}">#{f.name}</a></li>
+                    </ui:repeat>
+                </ul>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" header="#{indexController.fileName}">
+                <pre>#{indexController.string}</pre>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>
+
